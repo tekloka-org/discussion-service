@@ -11,7 +11,7 @@ import org.tekloka.discussion.security.UserAccess;
 @FeignClient(name = "user-service")
 public interface UserServiceProxy {
 	
-	@GetMapping(path = "/user/get-user-access/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/admin/get-user-access/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	UserAccess getUserAccess(
 			@RequestHeader(value = DataConstants.FEIGN_CLIENT_ACCESS_ID, required = true) String feignClientAccessId,
 			@PathVariable("userId") String userId);
