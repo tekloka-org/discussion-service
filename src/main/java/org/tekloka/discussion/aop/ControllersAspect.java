@@ -33,7 +33,7 @@ public class ControllersAspect {
 		this.dataUtil = dataUtil;
 	}
 
-	@Before("@annotation(org.tekloka.article.security.AccessPermissions)")
+	@Before("@annotation(org.tekloka.discussion.security.AccessPermissions)")
 	public void verifyAccessPermissions(JoinPoint joinPoint){
 		var hasAccess = false;
 		String accessPermission = ((MethodSignature) joinPoint.getSignature()).getMethod()
@@ -53,7 +53,7 @@ public class ControllersAspect {
 		}
 	}
 	
-	@Before("@annotation(org.tekloka.article.security.AllowFeignClient)")
+	@Before("@annotation(org.tekloka.discussion.security.AllowFeignClient)")
 	public void verifyFeignClient(JoinPoint joinPoint) {
 		var hasAccess = false;
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
