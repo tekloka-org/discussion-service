@@ -5,6 +5,10 @@ public class ResponseConstants {
 	
 	}
 	
+	public static final String FORBIDDEN = "FORBIDDEN";
+	public static final String USER_REMOVED_FROM_SECURITY_CACHE = "USER_REMOVED_FROM_SECURITY_CACHE";
+	public static final String SECURITY_CACHE_CLEARED = "SECURITY_CACHE_CLEARED";
+	
 	public static final String QUESTION_SAVED = "QUESTION_SAVED";
 	public static final String QUESTION_NOT_SAVED = "QUESTION_NOT_SAVED";
 	public static final String QUESTION_FOUND = "QUESTION_FOUND";
