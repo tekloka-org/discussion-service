@@ -10,9 +10,19 @@ import org.tekloka.discussion.document.Answer;
 import org.tekloka.discussion.document.Question;
 import org.tekloka.discussion.dto.AnswerDTO;
 import org.tekloka.discussion.dto.QuestionDTO;
+import org.tekloka.discussion.security.SecurityCache;
+import org.tekloka.discussion.util.DataUtil;
 
 @Component
 public class QuestionMapper {
+	
+	private final DataUtil dataUtil;
+	private final SecurityCache securityCache;
+	
+	public QuestionMapper(DataUtil dataUtil, SecurityCache securityCache) {
+		this.dataUtil = dataUtil;
+		this.securityCache = securityCache;
+	}
 	
 	public Question toQuestion(Optional<Question> questionOptional, QuestionDTO questionDTO) {
 		var question = new Question();
@@ -32,6 +42,9 @@ public class QuestionMapper {
 		questionDTO.setDescription(question.getDescription());
 		questionDTO.setAuthorId(question.getCreatedBy());
 		questionDTO.setUrlPath(question.getUrlPath());
+		questionDTO.setAuthorName(securityCache.getUserName(question.getCreatedBy()));
+		questionDTO.setCreatedOn(dataUtil.convertLocalDateTimeToString(question.getCreatedDate()));
+		questionDTO.setModifiedOn(dataUtil.convertLocalDateTimeToString(question.getLastModifiedDate()));
 		return questionDTO;
 	}
 	

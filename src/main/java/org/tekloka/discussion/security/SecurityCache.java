@@ -27,6 +27,18 @@ public final class SecurityCache {
 		return userAccessMap.get(userId);
 	}
 	
+	public String getUserName(String userId) {
+		if(userAccessMap.containsKey(userId)) {
+			return userAccessMap.get(userId).getUserName();
+		}else {
+			var userAccess = addUserToAccessMap(userId); 
+			if(null != userAccess) {
+				return userAccess.getUserName();
+			}
+		}
+		return "";
+	}
+	
 	public Set<String> getUserPermissionSet(String userId){
 		if(userAccessMap.containsKey(userId)) {
 			return userAccessMap.get(userId).getPermissionKeys();

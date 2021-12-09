@@ -12,5 +12,7 @@ public class QuestionDTO {
 	private String description;
 	private String authorId;
 	private String urlPath;
-	
+	private String authorName;
+	private String createdOn;
+	private String modifiedOn;
 }
